@@ -5,11 +5,24 @@ import 'package:lucide_icons/lucide_icons.dart';
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final String lable;
-
-  CustomTextField({super.key, required this.hintText, required this.lable});
+  final Function(String?)? onSaved;
+  CustomTextField({
+    super.key,
+    required this.hintText,
+    required this.lable,
+    this.onSaved,
+  });
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (val) {
+        if (val?.isEmpty ?? true) {
+          return 'Feild is required';
+        } else {
+          return null;
+        }
+      },
+      onSaved: onSaved,
       maxLines: null,
       cursorColor: Colors.white,
       style: GoogleFonts.poppins(color: Color(0xff52EBD6)),
