@@ -1,1 +1,1 @@
-String kNotesBox = 'notes box';
+String kNotesBox = 'notes_box';
