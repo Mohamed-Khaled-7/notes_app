@@ -43,9 +43,16 @@ class CustomModelSheet extends StatelessWidget {
                 customShowDialog(context);
               });
             }
-            return AbsorbPointer(
-              absorbing: state is AddNoteLoading ? true : false,
-              child: CustomNoteForm(),
+            return Padding(
+              padding: EdgeInsets.only(
+                left: 16,
+                right: 16,
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child: AbsorbPointer(
+                absorbing: state is AddNoteLoading ? true : false,
+                child: CustomNoteForm(),
+              ),
             );
           },
         ),
