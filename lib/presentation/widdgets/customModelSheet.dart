@@ -13,10 +13,11 @@ class CustomModelSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    var singleChildScrollView = SingleChildScrollView(
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state is AddNoteSuccess) {
+            Navigator.pop(context);
             showSnakBar(
               context: context,
               message: 'Note Added Successfully',
@@ -25,6 +26,7 @@ class CustomModelSheet extends StatelessWidget {
             );
           }
           if (state is AddNoteFailure) {
+            Navigator.pop(context);
             showSnakBar(
               context: context,
               message: 'Falied ${state.errMessage}',
@@ -35,11 +37,15 @@ class CustomModelSheet extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is AddNoteLoading) {
-            customShowDialog(context);
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              customShowDialog(context);
+            });
           }
+
           return CustomNoteForm();
         },
       ),
     );
+    return singleChildScrollView;
   }
 }

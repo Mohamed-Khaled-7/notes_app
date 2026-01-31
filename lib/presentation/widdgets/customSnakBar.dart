@@ -14,14 +14,12 @@ void showSnakBar({
           Icon(icons, color: Colors.white, size: 20),
           SizedBox(width: 10),
           Expanded(
-            child: Expanded(
-              child: Text(
-                message,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 15,
-                ),
+            child: Text(
+              message,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 15,
               ),
             ),
           ),
