@@ -17,7 +17,7 @@ class NotesView extends StatelessWidget {
         child: ListView.builder(
           padding: EdgeInsets.zero,
           itemBuilder: (context, index) {
-            return CustomNoteCard(color: Colors.blueAccent);
+            return CustomNoteCard();
           },
           itemCount: 10,
         ),
