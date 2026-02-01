@@ -16,7 +16,6 @@ class NotesView extends StatefulWidget {
   @override
   State<NotesView> createState() => _NotesViewState();
 }
-
 class _NotesViewState extends State<NotesView> {
   @override
   // initState() {
