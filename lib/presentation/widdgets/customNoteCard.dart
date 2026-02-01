@@ -3,9 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:noteapp/business_logic/notes_cubit/notes_cubit.dart';
+import 'package:noteapp/data/note_model.dart';
 
-class CustomNoteCard extends StatelessWidget {
-  CustomNoteCard({super.key});
+class NoteItem extends StatefulWidget {
+  final NoteModel note;
+  NoteItem({super.key, required this.note});
+
+  @override
+  State<NoteItem> createState() => _NoteItemState();
+}
+
+class _NoteItemState extends State<NoteItem> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -35,7 +43,7 @@ class CustomNoteCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 19),
                         child: Text(
-                          'Flutter tips',
+                          widget.note.title,
                           style: GoogleFonts.poppins(
                             fontSize: 32,
                             color: Colors.black,
@@ -57,7 +65,7 @@ class CustomNoteCard extends StatelessWidget {
                   ),
                   SizedBox(height: 24),
                   Text(
-                    'Build Your Career with\n Tharwat Samy',
+                    widget.note.content,
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       color: Colors.black.withOpacity(0.6),
