@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:noteapp/business_logic/notes_cubit/notes_cubit.dart';
 import 'package:noteapp/data/note_model.dart';
@@ -54,7 +55,7 @@ class _NoteItemState extends State<NoteItem> {
                         padding: const EdgeInsets.only(top: 22, right: 12),
                         child: IconButton(
                           onPressed: () {
-                            
+                            widget.note.delete();
                           },
                           icon: Icon(
                             LucideIcons.trash2,
