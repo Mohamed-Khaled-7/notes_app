@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:noteapp/business_logic/add_note_cubit/cubit/add_note_cubit_cubit.dart';
 import 'package:noteapp/const/constants.dart';
 import 'package:noteapp/data/note_model.dart';
@@ -10,6 +11,8 @@ import 'package:noteapp/presentation/views/simpleObserver.dart';
 
 void main() async {
   Bloc.observer = Simpleobserver();
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('en');
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(kNotesBox);

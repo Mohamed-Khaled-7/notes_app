@@ -53,7 +53,9 @@ class _NoteItemState extends State<NoteItem> {
                       Padding(
                         padding: const EdgeInsets.only(top: 22, right: 12),
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            
+                          },
                           icon: Icon(
                             LucideIcons.trash2,
                             color: Colors.black,
@@ -78,7 +80,7 @@ class _NoteItemState extends State<NoteItem> {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 26),
                       child: Text(
-                        'May 12,2026',
+                        widget.note.date.toString(),
                         style: GoogleFonts.aBeeZee(
                           fontSize: 16,
                           color: Colors.black.withOpacity(0.9),
