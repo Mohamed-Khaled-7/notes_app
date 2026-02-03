@@ -17,12 +17,9 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'Notes', icon: Icon(LucideIcons.search)),
-      body: BlocProvider(
-        create: (context) => NotesCubit()..fetchAllData(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 13),
-          child: NotesList(),
-        ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 13),
+        child: NotesList(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
