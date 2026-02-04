@@ -53,7 +53,7 @@ class CustomModelSheet extends StatelessWidget {
               ),
               child: AbsorbPointer(
                 absorbing: state is AddNoteLoading ? true : false,
-                child: CustomNoteForm(),
+                child: CustomNoteForm(titleHint: 'title',contentHint: 'content',),
               ),
             );
           },

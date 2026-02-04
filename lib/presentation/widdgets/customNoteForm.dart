@@ -7,8 +7,13 @@ import 'package:noteapp/presentation/widdgets/customBottom.dart';
 import 'package:noteapp/presentation/widdgets/cutomTextFeild.dart';
 
 class CustomNoteForm extends StatefulWidget {
-  CustomNoteForm({super.key});
-
+  CustomNoteForm({
+    super.key,
+    required this.titleHint,
+    required this.contentHint,
+  });
+  String titleHint;
+  String contentHint;
   @override
   State<CustomNoteForm> createState() => _CustomNoteFormState();
 }
@@ -33,10 +38,10 @@ class _CustomNoteFormState extends State<CustomNoteForm> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 14),
                   child: CustomTextField(
-                    onSaved: (val) {
+                    onChanged: (val) {
                       title = val;
                     },
-                    hintText: 'title',
+                    hintText: widget.titleHint,
                     lable: 'title',
                   ),
                 ),
@@ -44,10 +49,10 @@ class _CustomNoteFormState extends State<CustomNoteForm> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 14),
                   child: CustomTextField(
-                    onSaved: (val) {
+                    onChanged: (val) {
                       content = val;
                     },
-                    hintText: 'content',
+                    hintText: widget.contentHint,
                     lable: 'Content',
                   ),
                 ),

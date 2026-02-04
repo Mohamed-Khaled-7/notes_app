@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  CustomAppBar({super.key, required this.title, required this.icon});
+  CustomAppBar({super.key, required this.title, required this.icon,this.onPressed});
   final String title;
   final Icon icon;
-
+  void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 color: Colors.white.withOpacity(0.05),
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: IconButton(onPressed: () {}, icon: icon),
+              child: IconButton(onPressed:onPressed , icon: icon),
             ),
           ),
         ),

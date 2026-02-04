@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart';
-import 'package:noteapp/presentation/widdgets/customAppBar.dart';
-import 'package:noteapp/presentation/widdgets/customModelSheet.dart';
+import 'package:noteapp/data/note_model.dart';
+import 'package:noteapp/presentation/widdgets/custom_edit_feild.dart';
 
 class EditNote extends StatelessWidget {
-  const EditNote({super.key});
+  EditNote({super.key});
   static String id = 'EditNote';
+  late NoteModel note;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: 'Notes', icon: Icon(LucideIcons.check)),
-      body: CustomModelSheet(),
-    );
+    NoteModel note = ModalRoute.of(context)!.settings.arguments as NoteModel;
+    return Scaffold(body: EditNoteViewBody(note: note));
   }
 }
- 

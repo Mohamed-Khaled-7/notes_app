@@ -2,26 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-class CustomTextField extends StatelessWidget {
+class EditTextFeild extends StatelessWidget {
   final String hintText;
-  final String lable;
   final Function(String?)? onChanged;
-  CustomTextField({
-    super.key,
-    required this.hintText,
-    required this.lable,
-    this.onChanged,
-  });
+  EditTextFeild({super.key, required this.hintText, this.onChanged});
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: (val) {
-        if (val?.isEmpty ?? true) {
-          return 'Feild is required';
-        } else {
-          return null;
-        }
-      },
+    return TextField(
       onChanged: onChanged,
       maxLines: null,
       cursorColor: Colors.white,
@@ -35,7 +22,6 @@ class CustomTextField extends StatelessWidget {
         hintStyle: GoogleFonts.poppins(color: Color(0xff52EBD6)),
         floatingLabelStyle: GoogleFonts.poppins(color: Color(0xff52EBD6)),
         filled: true,
-        labelText: lable,
 
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),

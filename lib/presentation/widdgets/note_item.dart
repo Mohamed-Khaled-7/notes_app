@@ -15,7 +15,7 @@ class NoteItem extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, 'EditNote');
+          Navigator.pushNamed(context, 'EditNote',arguments: note);
         },
         child: Container(
           width: double.infinity,
