@@ -24,6 +24,7 @@ class NotesList extends StatelessWidget {
                   fontSize: 23,
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
           );
