@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:noteapp/business_logic/notes_cubit/notes_cubit.dart';
 import 'package:noteapp/data/note_model.dart';
 import 'package:noteapp/presentation/widdgets/customAppBar.dart';
 
@@ -28,6 +30,8 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
           widget.note.title = title ?? widget.note.title;
           widget.note.content = content ?? widget.note.content;
           widget.note.save();
+          Navigator.pop(context);
+          BlocProvider.of<NotesCubit>(context).fetchAllData();
         },
       ),
       body: Column(

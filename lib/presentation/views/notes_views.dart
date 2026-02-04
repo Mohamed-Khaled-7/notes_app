@@ -4,6 +4,7 @@ import 'package:lucide_icons/lucide_icons.dart';
 import 'package:noteapp/business_logic/notes_cubit/notes_cubit.dart';
 import 'package:noteapp/presentation/widdgets/customAppBar.dart';
 import 'package:noteapp/presentation/widdgets/customModelSheet.dart';
+import 'package:noteapp/presentation/widdgets/note_view_body.dart';
 import 'package:noteapp/presentation/widdgets/notes_list.dart';
 
 class NotesView extends StatefulWidget {
@@ -17,10 +18,7 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'Notes', icon: Icon(LucideIcons.search)),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 13),
-        child: NotesList(),
-      ),
+      body:NotesViewBody() ,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
