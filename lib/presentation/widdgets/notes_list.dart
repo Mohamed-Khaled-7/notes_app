@@ -13,13 +13,29 @@ class NotesList extends StatelessWidget {
       builder: (context, state) {
         List<NoteModel> notes =
             BlocProvider.of<NotesCubit>(context).notes ?? [];
-        return ListView.builder(
-          padding: EdgeInsets.zero,
-          itemBuilder: (context, index) {
-            return NoteItem(note: notes[index]);
-          },
-          itemCount: notes.length,
-        );
+        if (notes.isEmpty) {
+          return Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: const Center(
+              child: Text(
+                'Start adding your first note and keep your ideas organize',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 23,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          );
+        } else {
+          return ListView.builder(
+            padding: EdgeInsets.zero,
+            itemBuilder: (context, index) {
+              return NoteItem(note: notes[index]);
+            },
+            itemCount: notes.length,
+          );
+        }
       },
     );
   }
