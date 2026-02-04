@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:noteapp/business_logic/notes_cubit/notes_cubit.dart';
 import 'package:noteapp/data/note_model.dart';
@@ -20,6 +22,9 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, content;
+  Color currentColor = Colors.white;
+  Color pickerColor = Colors.white;
+  void changeColor(Color color) => {pickerColor = color};
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +34,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
         onPressed: () {
           widget.note.title = title ?? widget.note.title;
           widget.note.content = content ?? widget.note.content;
+          widget.note.color = currentColor.value ?? widget.note.color;
           widget.note.save();
           Navigator.pop(context);
           BlocProvider.of<NotesCubit>(context).fetchAllData();
@@ -37,7 +43,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
       body: Column(
         children: [
           Container(
-            height: 330,
+            height: 220,
             child: ListView(
               children: [
                 SizedBox(height: 14),
@@ -62,6 +68,51 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                   ),
                 ),
               ],
+            ),
+          ),
+          Center(
+            child: Container(
+              color: Colors.transparent,
+              child: GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text(
+                        'Select Color',
+                        style: GoogleFonts.poppins(color: Colors.cyanAccent),
+                      ),
+                      content: ColorPicker(
+                        pickerColor: pickerColor,
+                        onColorChanged: changeColor,
+                      ),
+                      actions: [
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              currentColor = pickerColor;
+                            });
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            'Got it',
+                            style: GoogleFonts.poppins(
+                              color: Colors.cyanAccent,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                child: Text(
+                  'Edit Color',
+                  style: GoogleFonts.poppins(
+                    color: Colors.cyanAccent,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
             ),
           ),
         ],

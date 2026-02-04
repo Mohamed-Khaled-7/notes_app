@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noteapp/data/note_model.dart';
-import 'package:noteapp/presentation/widdgets/custom_edit_feild.dart';
+import 'package:noteapp/presentation/widdgets/edit_view_body.dart';
 
 class EditNote extends StatelessWidget {
   EditNote({super.key});
