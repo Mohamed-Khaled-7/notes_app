@@ -3,11 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:noteapp/business_logic/add_note_cubit/cubit/add_note_cubit_cubit.dart';
 import 'package:noteapp/business_logic/notes_cubit/notes_cubit.dart';
-import 'package:noteapp/presentation/widdgets/customBottom.dart';
 import 'package:noteapp/presentation/widdgets/customNoteForm.dart';
 import 'package:noteapp/presentation/widdgets/customSnakBar.dart';
 import 'package:noteapp/presentation/widdgets/customSpinKit.dart';
-import 'package:noteapp/presentation/widdgets/cutomTextFeild.dart';
+
 
 class CustomModelSheet extends StatelessWidget {
   const CustomModelSheet({super.key});

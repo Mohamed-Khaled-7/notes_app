@@ -15,14 +15,14 @@ class NoteItem extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, 'EditNote',arguments: note);
+          Navigator.pushNamed(context, 'EditNote', arguments: note);
         },
         child: Container(
           width: double.infinity,
           height: 240,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(19),
-            color: Colors.blueAccent,
+            color: Color(note.color!),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -50,7 +50,7 @@ class NoteItem extends StatelessWidget {
                       child: IconButton(
                         onPressed: () {
                           note.delete();
-                          BlocProvider.of<NotesCubit>(context).fetchAllData(); 
+                          BlocProvider.of<NotesCubit>(context).fetchAllData();
                         },
                         icon: const Icon(
                           LucideIcons.trash2,
