@@ -17,7 +17,6 @@ void main() async {
   await initializeDateFormatting('en');
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
-
   await Hive.openBox<NoteModel>(kNotesBox);
   runApp(const NotesApp());
 }

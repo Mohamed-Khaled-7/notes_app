@@ -16,27 +16,40 @@ class SearchNotesDelegate extends SearchDelegate {
   Widget buildLeading(BuildContext context) {
     return IconButton(
       icon: Icon(LucideIcons.arrowLeft),
-      onPressed: () => close(context, null),
+      onPressed: () => {
+        close(context, null),
+        BlocProvider.of<NotesCubit>(context).fetchAllData(),
+      },
     );
   }
 
   @override
   Widget buildResults(BuildContext context) {
     context.read<NotesCubit>().searcheNotes(query);
-    List<NoteModel> results = context.read<NotesCubit>().searchedNotes;
+    List<NoteModel> results = context.read<NotesCubit>().notesSearched;
     if (results.isEmpty) {
       return Center(
         child: Text(
           'No resultls founded',
-
           style: GoogleFonts.poppins(fontSize: 23, color: Colors.white),
         ),
       );
+    } else {
+      results = results
+          .where(
+            (note) =>
+                note.title.toLowerCase().contains(query.toLowerCase()) ||
+                note.content.toLowerCase().contains(query.toLowerCase()),
+          )
+          .toList();
     }
     return ListView.builder(
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
-        return NoteItem(note: results[index]);
+        return NoteItem(
+          note: results[index],
+          key: ValueKey(results[index].key),
+        );
       },
       itemCount: results.length,
     );

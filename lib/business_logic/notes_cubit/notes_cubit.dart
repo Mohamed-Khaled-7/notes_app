@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
 import 'package:noteapp/const/constants.dart';
@@ -11,12 +12,12 @@ class NotesCubit extends Cubit<NotesState> {
     fetchAllData();
   }
   List<NoteModel>? notes;
-  List<NoteModel> searchedNotes = [];
-  searcheNotes(String query) {
+  List<NoteModel> notesSearched = [];
+  void searcheNotes(String query) {
     if (query.isEmpty) {
-      searchedNotes = notes!;
+      notesSearched = notes!;
     } else {
-       searchedNotes = notes!
+      notesSearched = notes!
           .where(
             (note) =>
                 note.title.toLowerCase().contains(query.toLowerCase()) ||
