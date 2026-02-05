@@ -9,6 +9,7 @@ import 'package:noteapp/presentation/widdgets/customAppBar.dart';
 import 'package:noteapp/presentation/widdgets/customModelSheet.dart';
 import 'package:noteapp/presentation/widdgets/note_view_body.dart';
 import 'package:noteapp/presentation/widdgets/notes_list.dart';
+import 'package:noteapp/presentation/widdgets/searche_delegated.dart';
 
 class NotesView extends StatefulWidget {
   const NotesView({super.key});
@@ -16,11 +17,22 @@ class NotesView extends StatefulWidget {
   @override
   State<NotesView> createState() => _NotesViewState();
 }
+
 class _NotesViewState extends State<NotesView> {
   @override
   Widget build(BuildContext context) {
+    NotesCubit notes = BlocProvider.of<NotesCubit>(context);
     return Scaffold(
-      appBar: CustomAppBar(title: 'Notes', icon: Icon(LucideIcons.search)),
+      appBar: CustomAppBar(
+        title: 'Notes',
+        icon: Icon(LucideIcons.search),
+        onPressed: () {
+          showSearch(
+            context: context,
+            delegate: SearchNotesDelegate(),
+          );
+        },
+      ),
       body: NotesViewBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

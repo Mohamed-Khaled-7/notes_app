@@ -5,4 +5,6 @@ sealed class NotesState {}
 
 final class NotesInitial extends NotesState {}
 
-final class NoteSuccess extends NotesState {}
+final class NoteLoaded extends NotesState {}
+
+final class NoteSearchedSuccess extends NotesState {}
