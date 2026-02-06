@@ -5,9 +5,11 @@ import 'package:lucide_icons/lucide_icons.dart';
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final String lable;
+  int? maxlLines;
   final Function(String?)? onChanged;
   CustomTextField({
     super.key,
+    required this.maxlLines,
     required this.hintText,
     required this.lable,
     this.onChanged,
@@ -23,7 +25,7 @@ class CustomTextField extends StatelessWidget {
         }
       },
       onChanged: onChanged,
-      maxLines: null,
+      maxLines: maxlLines,
       cursorColor: Colors.white,
       style: GoogleFonts.poppins(color: Color(0xff52EBD6)),
       decoration: InputDecoration(

@@ -22,9 +22,16 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, content;
-  Color currentColor = Colors.white;
-  Color pickerColor = Colors.white;
+  late Color currentColor;
+  late Color pickerColor;
   void changeColor(Color color) => {pickerColor = color};
+  @override
+  void initState() {
+    super.initState();
+    currentColor = Color(widget.note.color);
+    pickerColor = Color(widget.note.color);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +41,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
         onPressed: () {
           widget.note.title = title ?? widget.note.title;
           widget.note.content = content ?? widget.note.content;
-          widget.note.color = currentColor.value ?? widget.note.color;
+          widget.note.color = currentColor.value;
           widget.note.save();
           Navigator.pop(context);
           BlocProvider.of<NotesCubit>(context).fetchAllData();

@@ -36,6 +36,7 @@ class _NotesViewState extends State<NotesView> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
+              backgroundColor: Colors.black,
               isScrollControlled: true,
               context: context,
               builder: (context) {

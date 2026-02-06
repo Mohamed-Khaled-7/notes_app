@@ -42,6 +42,7 @@ class _CustomNoteFormState extends State<CustomNoteForm> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 14),
                   child: CustomTextField(
+                    maxlLines: 1,
                     onChanged: (val) {
                       title = val;
                     },
@@ -53,6 +54,7 @@ class _CustomNoteFormState extends State<CustomNoteForm> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 14),
                   child: CustomTextField(
+                    maxlLines: null,
                     onChanged: (val) {
                       content = val;
                     },
