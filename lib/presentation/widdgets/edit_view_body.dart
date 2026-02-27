@@ -7,18 +7,20 @@ import 'package:noteapp/business_logic/notes_cubit/notes_cubit.dart';
 import 'package:noteapp/data/note_model.dart';
 import 'package:noteapp/presentation/widdgets/customAppBar.dart';
 
-import 'package:noteapp/presentation/widdgets/cutomTextFeild.dart';
 import 'package:noteapp/presentation/widdgets/edit_text_feild.dart';
 
 class EditNoteViewBody extends StatefulWidget {
   EditNoteViewBody({super.key, required this.note});
   NoteModel note;
-
+  
   @override
   State<EditNoteViewBody> createState() => _EditNoteViewBodyState();
 }
 
 class _EditNoteViewBodyState extends State<EditNoteViewBody> {
+  late TextEditingController titleController;
+  late TextEditingController contentController;
+  
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, content;
@@ -26,12 +28,13 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   late Color pickerColor;
   void changeColor(Color color) => {pickerColor = color};
   @override
-  void initState() {
+  void initState(){
     super.initState();
+    titleController = TextEditingController(text: widget.note.title);
+    contentController =TextEditingController(text: content);
     currentColor = Color(widget.note.color);
     pickerColor = Color(widget.note.color);
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +61,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 14),
                   child: EditTextFeild(
+                    controller:titleController,
                     onChanged: (val) {
                       title = val;
                     },
@@ -68,6 +72,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 14),
                   child: EditTextFeild(
+                    controller:contentController ,
                     onChanged: (val) {
                       content = val;
                     },

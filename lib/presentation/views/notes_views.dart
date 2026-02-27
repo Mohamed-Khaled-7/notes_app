@@ -27,16 +27,18 @@ class _NotesViewState extends State<NotesView> {
         appBar: CustomAppBar(
           title: 'Notes',
           icon: Icon(LucideIcons.search),
-
           onPressed: () {
             showSearch(context: context, delegate: SearchNotesDelegate());
           },
         ),
         body: NotesViewBody(),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(27),
+          ),
           onPressed: () {
             showModalBottomSheet(
-              backgroundColor: Colors.black,
               isScrollControlled: true,
               context: context,
               builder: (context) {

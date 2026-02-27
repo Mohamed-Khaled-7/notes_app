@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
-
 import 'package:noteapp/business_logic/notes_cubit/notes_cubit.dart';
 import 'package:noteapp/const/constants.dart';
 import 'package:noteapp/data/note_model.dart';

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -5,10 +6,17 @@ import 'package:lucide_icons/lucide_icons.dart';
 class EditTextFeild extends StatelessWidget {
   final String hintText;
   final Function(String?)? onChanged;
-  EditTextFeild({super.key, required this.hintText, this.onChanged});
+  TextEditingController controller;
+  EditTextFeild({
+    Key? key,
+    required this.hintText,
+    this.onChanged,
+    required this.controller,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller:controller,
       onChanged: onChanged,
       maxLines: null,
       cursorColor: Colors.white,
