@@ -12,7 +12,7 @@ import 'package:noteapp/presentation/widdgets/edit_text_feild.dart';
 class EditNoteViewBody extends StatefulWidget {
   EditNoteViewBody({super.key, required this.note});
   NoteModel note;
-  
+
   @override
   State<EditNoteViewBody> createState() => _EditNoteViewBodyState();
 }
@@ -20,7 +20,7 @@ class EditNoteViewBody extends StatefulWidget {
 class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   late TextEditingController titleController;
   late TextEditingController contentController;
-  
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, content;
@@ -28,13 +28,14 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   late Color pickerColor;
   void changeColor(Color color) => {pickerColor = color};
   @override
-  void initState(){
+  void initState() {
     super.initState();
     titleController = TextEditingController(text: widget.note.title);
-    contentController =TextEditingController(text: content);
+    contentController = TextEditingController(text: widget.note.content);
     currentColor = Color(widget.note.color);
     pickerColor = Color(widget.note.color);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +62,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 14),
                   child: EditTextFeild(
-                    controller:titleController,
+                    controller: titleController,
                     onChanged: (val) {
                       title = val;
                     },
@@ -72,11 +73,11 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 14),
                   child: EditTextFeild(
-                    controller:contentController ,
+                    controller: contentController,
                     onChanged: (val) {
                       content = val;
                     },
-                    hintText: widget.note.content,
+                    //hintText: widget.note.content,
                   ),
                 ),
               ],

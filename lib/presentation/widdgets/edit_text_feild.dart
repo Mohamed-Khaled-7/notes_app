@@ -4,19 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class EditTextFeild extends StatelessWidget {
-  final String hintText;
+  final String? hintText;
   final Function(String?)? onChanged;
   TextEditingController controller;
   EditTextFeild({
     Key? key,
-    required this.hintText,
+    this.hintText,
     this.onChanged,
     required this.controller,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller:controller,
+      controller: controller,
       onChanged: onChanged,
       maxLines: null,
       cursorColor: Colors.white,
